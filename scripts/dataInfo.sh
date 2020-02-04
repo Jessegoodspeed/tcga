@@ -1,5 +1,4 @@
 #!/bin/bash
-# Before use please run 'init.sh' (or perform its operations yourself).
 # This script is for performing basic directory/file descriptive analysis for the TCGA dataset.
 # Upon successful completion there will be a log file summary in each directory (<dir>.log).
 cd "$(dirname "$0")" || exit
