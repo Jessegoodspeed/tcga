@@ -31,7 +31,7 @@ for d in "${DIRS[@]}"; do
   cols="$(seq -s, 2 2 1200)" # Above max columns; shortcut since `cut` will ignore extra columns.
   header="$(yes "$subDir" | head -n"$(find . -name '*.txt' | wc -l)" | tr '\n' '\t' | sed s/.$//)"
 
-  if [[ "$OSTYPE" == "darwin"* ]]; then # Since macOS `seq` is wacky.
+  if [[ "$OSTYPE" == "darwin"* ]]; then # Different sed distros.
     cols="$(echo "$cols" | sed 's/.$//')"
   fi
 
@@ -55,3 +55,9 @@ paste ./genes.tsv ./TCGA-BRCA/BRCA.tsv ./TCGA-COAD/COAD.tsv ./TCGA-GBM/GBM.tsv .
 rm ./genes.tsv ./TCGA-BRCA/BRCA.tsv ./TCGA-COAD/COAD.tsv ./TCGA-GBM/GBM.tsv ./TCGA-KIRC/KIRC.tsv \
   ./TCGA-KIRP/KIRP.tsv ./TCGA-LUAD/LUAD.tsv ./TCGA-LUSC/LUSC.tsv ./TCGA-OV/OV.tsv ./TCGA-READ/READ.tsv \
   ./TCGA-UCEC/UCEC.tsv
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  sed -i '' $'s/\t\t/\t0\t/g' tcgaFrame.tsv; sed -i '' $'s/\t\t/\t0\t/g' tcgaFrame.tsv # Both are needed.
+else
+  sed -i 's/\t\t/\t0\t/g' tcgaFrame.tsv; sed -i 's/\t\t/\t0\t/g' tcgaFrame.tsv
+fi
