@@ -1,5 +1,5 @@
 #!/bin/bash
-# This script is for performing basic directory/file descriptive analysis for the TCGA dataset.
+# This script is for performing basic directory/file descriptive analysis.
 # Upon successful completion there will be a log file summary in each directory (<dir>.log).
 cd "$(dirname "$0")" || exit
 cd ../data || exit
