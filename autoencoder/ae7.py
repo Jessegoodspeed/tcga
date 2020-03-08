@@ -30,11 +30,11 @@ class AE(torch.nn.Module):
         )
 
     def forward(self, features):
-        a = self.eH0(torch.nn.functional.tanh(features))  # activation
-        a = self.eH1(torch.nn.functional.tanh(a))
-        a = self.eH2(torch.nn.functional.tanh(a))
-        a = self.eO(torch.nn.functional.tanh(a))
-        a = self.dH0(torch.nn.functional.tanh(a))
-        a = self.dH1(torch.nn.functional.tanh(a))
-        a = self.dH2(torch.nn.functional.tanh(a))
-        return self.dO(torch.nn.functional.tanh(a))
+        a = self.eH0(torch.tanh(features))  # activation
+        a = self.eH1(torch.tanh(a))
+        a = self.eH2(torch.tanh(a))
+        a = self.eO(torch.tanh(a))
+        a = self.dH0(torch.tanh(a))
+        a = self.dH1(torch.tanh(a))
+        a = self.dH2(torch.tanh(a))
+        return self.dO(torch.tanh(a))
