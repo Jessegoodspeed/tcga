@@ -1,8 +1,7 @@
-from importlib import import_module
+import classes
 from json import load
 import numpy as np
 import pandas as pd
-import tcga
 import torch
 from torch.utils.data import DataLoader
 
@@ -12,13 +11,17 @@ with open("cnfg.json") as json_data_file:
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # dataset dimensions: (2210, 17814)
-dataloader = DataLoader(tcga.TCGA_Dataset(config['tsv']),
+dataloader = DataLoader(classes.TCGA_Dataset(config['tsv']),
                         batch_size=config['batch'],
                         num_workers=4,
                         shuffle=True)
 
 # create a model from autoencoder class
-model = import_module(config['model']).AE(input_shape=17814).to(device)
+model = classes.AE3(input_shape=17814).to(device) if \
+        config['model'].strip().lower() == 'ae3' else \
+        classes.AE5(input_shape=17814).to(device) if \
+        config['model'].strip().lower() == 'ae5' else \
+        classes.AE7(input_shape=17814).to(device)
 
 # create an Adam optimizer object with learning rate 1e-3
 optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
