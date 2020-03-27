@@ -19,8 +19,6 @@ dataloader = DataLoader(classes.TCGA_Dataset(config['tsv']),
 # create a model from autoencoder class
 model = classes.AE3(input_shape=17814).to(device) if \
         config['model'].strip().lower() == 'ae3' else \
-        classes.AE5(input_shape=17814).to(device) if \
-        config['model'].strip().lower() == 'ae5' else \
         classes.AE7(input_shape=17814).to(device)
 
 # create an Adam optimizer object with learning rate 1e-3
