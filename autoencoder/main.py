@@ -45,6 +45,7 @@ for epoch in range(epochs):
     loss = 0
     for i_batch, sample_batched in enumerate(dataloader):
         sample, labels = sample_batched['expression'], sample_batched['cancer']
+        print('Cancer labels: ', labels)
 
         # reshape mini-batch data to [N, 17814] matrix; load to active device
         sample = sample.view(-1, 17814).to(device)

@@ -82,6 +82,7 @@ class AE7(torch.nn.Module):
         a = self.eH1(torch.tanh(a))
         a = self.eH2(torch.tanh(a))
         a = self.eO(torch.tanh(a))
+        print('Encoder output: ', a)
         a = self.dH0(torch.tanh(a))
         a = self.dH1(torch.tanh(a))
         a = self.dH2(torch.tanh(a))
