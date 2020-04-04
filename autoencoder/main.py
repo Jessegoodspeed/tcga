@@ -24,8 +24,8 @@ model = classes.AE3(input_shape=17814).to(device) if \
 # create an Adam optimizer object with learning rate 1e-3
 optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
 
-# mean-squared error loss
-criterion = torch.nn.MSELoss()
+# mean absolute error
+criterion = torch.nn.L1Loss()
 
 if config['load']:
     checkpoint = torch.load(config['load'])
