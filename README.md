@@ -1,5 +1,6 @@
 # The Cancer Genome Atlas Program Project (692R) ⚛️
-This is a repository dedicated to the course project of building an genome autoencoder for cancers.
+This is a repository dedicated to the course project of building an genome autoencoder for cancers. The autoencoder implementation was inspired by [this example
+construction](https://medium.com/@afagarap/implementing-an-autoencoder-in-pytorch-19baa22647d1).
 
 ### Contents 📦
 `scripts/`: A collection of Bash scripts for various purposes. Tested on Bash v3 (macOS) and v4 (Linux).
